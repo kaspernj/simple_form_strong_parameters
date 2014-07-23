@@ -4,6 +4,6 @@ rvm:
 before_script:
   - cd spec/dummy; RAILS_ENV=test rake db:migrate
 script:
-  - bundle exec rspec
+  - CODECLIMATE_REPO_TOKEN=ae6341e3cdf19ff5f5591369278b9650ab69325e7a10650a98276c376f814cc1 bundle exec rspec
 notifications:
    email: false
