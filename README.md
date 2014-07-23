@@ -24,11 +24,16 @@ In your form use `simple_form_strong_parameters_for` instead of `simple_form_for
 
 In your controller do like this:
 ```ruby
-...
-def create
-  @user = User.new(simple_form_strong_parameters(:user))
-  @user.save!
-  redirect_to users_ptah(@user)
+class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(simple_form_strong_parameters(:user))
+    @user.save!
+    redirect_to users_ptah(@user)
+  end
 end
 ```
 
