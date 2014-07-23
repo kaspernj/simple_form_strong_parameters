@@ -1,0 +1,11 @@
+<%= simple_form_strong_parameters_for @user, url: post_recursive_users_path do |f| %>
+  <%= f.simple_fields_for :test do |f_test| %>
+    <%= f_test.input :test_value %>
+
+    <%= f_test.simple_fields_for :another_test do |f_another_test| %>
+      <%= f_another_test.input :another_test_value %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

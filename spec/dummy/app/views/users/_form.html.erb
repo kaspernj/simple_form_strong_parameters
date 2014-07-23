@@ -1,0 +1,11 @@
+<%= simple_form_strong_parameters_for @user do |f| %>
+  <% if @user.roles.any? %>
+    <%= f.simple_fields_for @user.roles.first do |f_role| %>
+      <%= f_role.input :role %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.submit %>
+<% end %>
