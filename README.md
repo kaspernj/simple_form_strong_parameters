@@ -34,9 +34,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(simple_form_strong_parameters(:user))
-    @user.save!
-    redirect_to users_ptah(@user)
+    @user = User.create!(simple_form_strong_parameters(:user))
+    redirect_to user_path(@user)
   end
 end
 ```
