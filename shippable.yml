@@ -2,10 +2,8 @@ language: ruby
 rvm:
   - 2.0.0
 before_script:
-  - cd spec/dummy
-  - RAILS_ENV=test rake db:migrate
-  - RAILS_ENV=test rake plugin_migrator:migrate
-  - cd ../..
+  - cd spec/dummy; RAILS_ENV=test rake db:migrate
+  - cd spec/dummy; RAILS_ENV=test rake plugin_migrator:migrate
 script:
   - bundle exec rspec
 notifications:
