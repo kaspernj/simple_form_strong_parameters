@@ -1,12 +1,17 @@
 module SimpleFormStrongParameters::ControllerHelper
-  def simple_form_strong_params namespace
-    hash = params.require(namespace)
+  def simple_form_strong_parameters_data
+    url = request.path
 
-    if !session[:simple_form_strong_parameters_storage] || !session[:simple_form_strong_parameters_storage][namespace]
-      raise "No such key given in params: #{namespace}"
+    if !session[:simple_form_strong_parameters_storage] || !session[:simple_form_strong_parameters_storage][url]
+      raise ActiveModel::ForbiddenAttributesError, "No strong attributes data was detected for: '#{url}'. Allowed was #{session[:simple_form_strong_parameters_storage].keys.join(", ")}."
     end
 
-    hash = permit_from_simple_form(hash, session[:simple_form_strong_parameters_storage][namespace])
+    return session[:simple_form_strong_parameters_storage][url]
+  end
+
+  def simple_form_strong_parameters namespace
+    hash = params.require(namespace)
+    hash = permit_from_simple_form(hash, simple_form_strong_parameters_data[namespace])
     hash.permit!
 
     return hash

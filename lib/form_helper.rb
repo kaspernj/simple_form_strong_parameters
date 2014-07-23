@@ -1,19 +1,17 @@
 module SimpleFormStrongParameters::FormHelper
   def simple_form_strong_parameters_for(*args)
     sfsp = SimpleFormStrongParameters::FormProxy.new(object: args[0], first: true)
-
-    session[:simple_form_strong_parameters_storage] ||= {}
-
-    if session[:simple_form_strong_parameters_storage][sfsp.namespace]
-      session_var = session[:simple_form_strong_parameters_storage][sfsp.namespace]
-    else
-      session_var = {}
-      session[:simple_form_strong_parameters_storage][sfsp.namespace] = session_var
-    end
+    storage = session[:simple_form_strong_parameters_storage] ||= {}
 
     simple_form_for *args do |f|
-      sfsp.session_var = session_var
+      url = f.options[:url]
+
+      url_storage = storage[url] ||= {}
+      ns_storage = url_storage[sfsp.namespace] ||= {}
+
       sfsp.simple_form = f
+      sfsp.session_var = ns_storage
+
       yield sfsp
     end
   end

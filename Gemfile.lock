@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     simple_form_strong_parameters (0.0.1)
-      rails (~> 4.0.8)
+      rails (>= 4.0.0)
       simple_form (>= 3.0.0)
       string-cases
 

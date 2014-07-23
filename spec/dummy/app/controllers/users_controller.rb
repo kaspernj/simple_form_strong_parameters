@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def post_recursive
-    raise ActiveModel::ForbiddenAttributesError unless simple_form_strong_params(:user).permitted?
+    raise ActiveModel::ForbiddenAttributesError unless simple_form_strong_parameters(:user).permitted?
   end
 
   # GET /users/1/edit
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(simple_form_strong_params(:user))
+    @user = User.new(simple_form_strong_parameters(:user))
 
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(simple_form_strong_params(:user))
+    if @user.update(simple_form_strong_parameters(:user))
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: 'edit'

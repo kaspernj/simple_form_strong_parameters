@@ -5,7 +5,7 @@ class SimpleFormStrongParameters::FormProxy
 
   def initialize args
     @args = args
-    @simple_form, @object = args[:simple_form], args[:object]
+    @object = args[:object]
   end
 
   def session_var=(session_var)
