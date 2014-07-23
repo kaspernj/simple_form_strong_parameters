@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/kaspernj/simple_form_strong_parameters.png)](https://codeclimate.com/github/kaspernj/simple_form_strong_parameters)
+[![Test Coverage](https://codeclimate.com/github/kaspernj/simple_form_strong_parameters/coverage.png)](https://codeclimate.com/github/kaspernj/simple_form_strong_parameters)
+[![Build Status](https://api.shippable.com/projects/53cfb6722f16960d05f88c47/badge/master)](https://www.shippable.com/projects/53cfb6722f16960d05f88c47)
+
 # SimpleFormStrongParameters
 
 By inspecting which `input`'s you call on `simple_form_for`, a session variable is generated in order to automatically do strong parameters for the next posted content, making it even more simple and easy to write controllers, because you can leave out the maintenence of `*_params`-methods completely!
